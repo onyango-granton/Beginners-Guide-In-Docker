@@ -1,58 +1,96 @@
-## ASCII-ART-WEB-STYLIZE
-The ASCII Art Web Stylize is a program written to generate ASCII art from a given string or its specified substring and writes the output to a webpage
-The format of the input received as arguments is:
-```
-Usage: go run .
-```
-## Key Features
+# ascii-art-web-dockerize
 
-- Supports multiple ASCII art banners for customization
-- Handles HTTP requests and responses appropriately 
-- Generates ASCII art based on user input and selected banner
-- Displays the ASCII art output on the web page
-- Follows good coding practices and project structure
+This is a continuation project of the ascii-art project that consists in creating a docker file that will be used run the project from a container.
+
+
+## Getting Started
+
+To get started with the project, download and install Go programming language using the link: https://go.dev/doc/install
+
+## Prerequisites
+
+Before interacting with the project, make sure that your local machine has docker installed and the docker engine is running. Use the command below to confirm that the engine is running:
+```bash
+docker version
+```
+
+You will know that the engine is running if you see its details listed as shown below.
+
+![](dockertest.png)
+
+## Installation
+
+1. Clone the repository from its remote location to your local environment with the command below:
+```bash
+git clone https://learn.zone01kisumu.ke/git/gonyango/ascii-art-web-dockerize.git
+```
+
+2. Navigate to the project's path
+```bash
+cd ascii-art-web-dockerize
+```
 
 ## Usage
 
-1. **Clone the repository**:
+Before running the program, the user needs to build an image of the docker file in their local machine. An image file can be built using the command below:
+```bash
+docker build -t [SPECIFY-IMAGE-NAME] .
+```
 
-    ```bash
-    git clone https://learn.zone01kisumu.ke/git/gonyango/ascii-art-web-stylize.git
-    ```
+Once an image file has been built, run the container with the command below:
+```bash
+docker run -p 8080:8080 [IMAGE-NAME]
+```
 
-2. **Navigate to the project directory**:
+or
 
-    ```bash
-    cd ascii-art-web-stylize
-    ```
+```bash
+docker run -d -p 8080:8080 [IMAGE-NAME]
+```
 
-3. **Run the server**:
+- Example
 
-    ```bash
-    go run main.go
-    ```
+1. Build an image out of the docker file using the below command:
+```bash
+docker build -t ascii-art-web-dockerize .
+```
+![](/imgs/build-image.png)
 
-4. **Open a web browser and visit** `http://localhost:8080`
+2. List the images to confirm the image with the specified name has been built using the command below:
+```bash
+docker images
+```
+![](/imgs/list-images.png)
 
-5. **Enter text, select a banner, and click "Generate"**
+3. You will know that the build process was succesfull if the specified name appears on the listed images. You can now run a container from the image using the below command:
+```bash
+docker run -p 8080:8080 ascii-art-web-dockerize
+```
 
-6. **The ASCII art output will be displayed on the page**
+or
 
-## Implementation Details
+```bash
+docker run -d -p 8080:8080 ascii-art-web-dockerize
+```
 
-The server uses the following key components:
+**NOTE:** Using the second command to run a container makes the container run on detached mode. This means that the container won't stop running even if the terminal is stopped and may therefore affect perfomance of the host machine if left to run for a long time. Use the command below to view the status of your containers:
+```bash
+docker ps -a
+```
 
-- **HTTP handlers** for processing GET and POST requests
-- **HTML templates** for rendering the web page
-- **ASCII art generation logic** based on user input and selected banner
-- **Appropriate HTTP status codes** for handling errors and success cases
-## Dependencies
-This program requires Go (Golang) to be installed on your system. You can download and install it from the [official Go website](https://golang.org/dl/).
+4. If successfully running, a feedback is displayed to the user informing them that the server is successfully running at port `http://localhost:8080` as shown below.
+![](/imgs/run-container.png)
 
-## Contributing
-Contributions to this project are welcome! If you'd like to contribute, please fork the repository and submit a pull request with your changes.
+From the illustrated example above, our server is running on port `:8080` and can be accessed by accessing the url `http://localhost:8080` on the web browser or clicking on the link using `CTRL + Left Click` combination.
 
-## Contributors
+From this point, the user can interact with the program in a variety of ways including:
+- Providing input using the textarea
+
+- Selecting their preferred banner file
+
+- Submitting their input for processing
+
+### Contributors
 <body>
 <div style="display: flex !important; justify-content: center !important;">
     <div style="margin: 10px;">
@@ -68,9 +106,8 @@ Contributions to this project are welcome! If you'd like to contribute, please f
 </div>
 </body>
 
+## Acknowledgement
 
+- [Zone01 Kisumu](https://www.zone01kisumu.ke)
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-
-

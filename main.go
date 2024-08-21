@@ -77,10 +77,6 @@ func main() {
 		fmt.Println("Usage:'go run .' or\n'go run main.go'")
 		return
 	}
-	// Create a new HTTP server.
-	server := http.Server{
-		Addr: "127.0.0.1:8080",
-	}
 
 	http.HandleFunc("/static/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "./static/index.css")
@@ -96,5 +92,5 @@ func main() {
 	http.Handle("/ascii-art", generate) // Handle ASCII art generation requests.
 
 	fmt.Println("Server Initiated at http://127.0.0.1:8080")
-	server.ListenAndServe() // Start the server and listen for requests.
+	http.ListenAndServe(":8080", nil) // Start the server and listen for requests.
 }
