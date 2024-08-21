@@ -15,7 +15,8 @@ docker version
 ```
 
 You will know that the engine is running if you see its details listed as shown below.
-![](/imgs/docker-engine.png)
+
+![](dockertest.png)
 
 ## Installation
 
